@@ -16,18 +16,19 @@ _MODEL_PATHS = {
 _CONTEXTUALIZED_EMBEDDINGS_TENSOR_NAME = "bert/encoder/Reshape_13:0"
 
 
-def _get_model_path(name_or_path):
+def _get_model_path(name_or_path, is_tokenizer=False):
     if name_or_path in _MODEL_PATHS:
-        print(f"Loading the known model '{name_or_path}'")
+        print(f"Loading the known {'tokenizer' if is_tokenizer else 'model'} '{name_or_path}'")
         model_path = _MODEL_PATHS[name_or_path]
     else:
-        print(f"This is not a known model. Assuming this is a path or a url...")
+        print(f"This is not a known {'tokenizer' if is_tokenizer else 'model'}. "
+              f"Assuming {name_or_path} is a path or a url...")
         model_path = name_or_path
     return model_path
 
 
 def load_tokenizer(name_or_path):
-    model_path = _get_model_path(name_or_path)
+    model_path = _get_model_path(name_or_path, is_tokenizer=True)
     vocab_file = os.path.join(model_path, "vocab.txt")
     supersense_vocab_file = os.path.join(model_path, "supersense_vocab.txt")
     return FullTokenizer(vocab_file=vocab_file, senses_file=supersense_vocab_file)
