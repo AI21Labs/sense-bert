@@ -30,8 +30,8 @@ import tensorflow as tf
 from sensebert import SenseBert
 
 with tf.Session() as session:
-    sensebert_model = SenseBERT("sensebert-base-uncased", session=session)
-    input_ids, input_mask = sensebert_model.tokenize(["he went to the store to buy some groceries.", "the store was closed."])
+    sensebert_model = SenseBERT("sensebert-base-uncased", session=session)  # or sensebert-large-uncased
+    input_ids, input_mask = sensebert_model.tokenize(["I went to the store to buy some groceries.", "The store was closed."])
     model_outputs = sensebert_model.run(input_ids, input_mask)
 
 contextualized_embeddings, mlm_logits, supersense_logits = model_outputs  # These are NumPy arrays
@@ -48,7 +48,7 @@ print(tokenizer.convert_ids_to_senses([np.argmax(supersense_logits[0][9])]))
 
 If you want to fine-tune SenseBERT, you will need its actual computation graph. Run
 ```python
-model, tokenizer = load_model('sensebert-base-uncased', session=self.session)
+model, tokenizer = load_model('sensebert-base-uncased', session=self.session)  # or sensebert-large-uncased
 ```
 
 Then ```model``` is an instance of ```SenseBertGraph```, and it holds both the required placeholders (```input_ids``` and ```input_mask```), as well as three output tensors: ```contextualized_embeddings```, ```mlm_logits``` and ```supersense_logits```. You can take any of these three tensors and build your graph on top of it. 
