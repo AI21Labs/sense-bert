@@ -10,8 +10,8 @@ We made two SenseBERT models public:
 * sensebert-large-uncased
 
 These models share the same number of parameters as Google's BERT models, except for the following (both changes are described in our paper thoroughly):
-1. We use larger vocabulary
-2. We add supersense prediction head at pre-training. The sense embeddings are also used as inputs to the model. 
+1. We use a larger vocabulary
+2. We add a supersense prediction head at pre-training. The sense embeddings are also used as inputs to the model. 
 
 ## Requirements
 
