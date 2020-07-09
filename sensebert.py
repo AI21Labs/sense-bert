@@ -40,8 +40,8 @@ def load_model(name_or_path, session=None):
     supersense_vocab_file = os.path.join(model_path, "supersense_vocab.txt")
     tokenizer = FullTokenizer(vocab_file, senses_file=supersense_vocab_file)
 
-    input_ids, input_mask = model.inputs['input_ids'], model.inputs['input_mask']
-    embeddings, mlm, ss = model.outputs['contextualized_embeddings'], model.outputs['masked_lm'], model.outputs['ss']
+    input_ids, input_mask = inputs['input_ids'], inputs['input_mask']
+    embeddings, mlm, ss = outputs['contextualized_embeddings'], outputs['masked_lm'], outputs['ss']
 
     return SenseBertGraph(input_ids=input_ids, input_mask=input_mask,
                           contextualized_embeddings=embeddings, supersense_losits=ss, mlm_logits=mlm),  tokenizer

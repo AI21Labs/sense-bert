@@ -42,7 +42,10 @@ import numpy as np
 
 tokenizer = sensebert_model.tokenizer
 print(tokenizer.convert_ids_to_senses([np.argmax(supersense_logits[0][9])]))
-
+```
+This will output:
+```
+['noun.artifact']
 ```
 ### Fine-tuning
 
