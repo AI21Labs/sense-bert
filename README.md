@@ -72,7 +72,7 @@ gsutil -m cp -r gs://ai21-public-models/sensebert-large-uncased PATH/TO/DIR
 
 Then you can go ahead and use our code exactly as before, with
 ```python
-sensebert_model = SenseBERT("PATH/TO/DIR", session=session)
+sensebert_model = SenseBert("PATH/TO/DIR", session=session)
 ```
 
 ## Citation 
